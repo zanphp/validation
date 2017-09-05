@@ -6,36 +6,16 @@ use Exception;
 
 class ValidationException extends Exception
 {
-    /**
-     * The validator instance.
-     *
-     * @var \Zan\Framework\Utilities\Validation\Validator
-     */
-    public $validator;
+    private $ValidationException;
 
-    /**
-     * The recommended response to send to the client
-     */
-    public $response;
-
-    /**
-     * Create a new exception instance.
-     *
-     * @param  \Zan\Framework\Utilities\Validation\Validator  $validator
-     */
     public function __construct($validator, $response = null)
     {
-        parent::__construct('The given data failed to pass validation.');
-
-        $this->response = $response;
-        $this->validator = $validator;
+        parent::__construct('');
+        $this->ValidationException = new \ZanPHP\Validation\ValidationException();
     }
 
-    /**
-     * Get the underlying response instance.
-     */
     public function getResponse()
     {
-        return $this->response;
+        $this->ValidationException->getResponse();
     }
 }
